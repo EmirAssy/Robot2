@@ -3,7 +3,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation 0.11470826054664322 -0.9752695229768031 -0.1889216041509343 4.430254142138116
-  position 1.0723647852152205 0.6637678964411544 -0.207686005733682
+  position 0.8967605504852727 0.5969810231007444 -0.16271722070275918
 }
 TexturedBackground {
 }
@@ -30,7 +30,7 @@ Robot {
       device [
         RotationalMotor {
           name "servo_motor"
-          maxVelocity 0.026
+          maxVelocity 13.1
           maxTorque 0.2157
         }
       ]
@@ -52,4 +52,5 @@ Robot {
       }
     }
   ]
+  controller "robot2"
 }
