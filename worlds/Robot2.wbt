@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.11470826054664322 -0.9752695229768031 -0.1889216041509343 4.430254142138116
-  position 0.8967605504852727 0.5969810231007444 -0.16271722070275918
+  orientation 0.07104335742528436 -0.988760454929371 -0.13155076637407417 4.549550012445699
+  position 1.2728120319183505 0.9679672689605834 -0.25898987367441423
 }
 TexturedBackground {
 }
@@ -14,7 +14,7 @@ Floor {
 Robot {
   translation 0 0.15 0
   children [
-    Shape {
+    DEF S_GREENBOX Shape {
       appearance PBRAppearance {
         baseColor 0.5411764705882353 0.8862745098039215 0.20392156862745098
       }
@@ -37,12 +37,65 @@ Robot {
       endPoint Solid {
         translation 0 0.2 0
         children [
-          Shape {
+          DEF S_REDBOX Shape {
             appearance PBRAppearance {
               baseColor 0.9372549019607843 0.1607843137254902 0.1607843137254902
             }
             geometry DEF G_REDBOX Box {
               size 0.1 0.1 0.1
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor 0 0.05 0
+            }
+            device [
+              RotationalMotor {
+                name "servo_motor2"
+                maxVelocity 13.1
+                maxTorque 0.216
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.2 0
+              rotation 1 0 0 0
+              children [
+                DEF S_PURPLEBOX Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.6784313725490196 0.4980392156862745 0.6588235294117647
+                  }
+                  geometry DEF G_PURPPLEBOX Box {
+                    size 0.1 0.3 0.1
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    anchor 0 0.15 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "servo_motor3"
+                      maxVelocity 13.1
+                      maxTorque 0.216
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 0.3 0
+                    children [
+                      DEF S_YELLOWBOX Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.9882352941176471 0.9137254901960784 0.30980392156862746
+                        }
+                        geometry Box {
+                          size 0.1 0.3 0.1
+                        }
+                      }
+                    ]
+                    boundingObject USE S_YELLOWBOX
+                  }
+                }
+              ]
+              boundingObject USE G_PURPPLEBOX
             }
           }
         ]
